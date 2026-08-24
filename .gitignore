@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Music
+Resources/Raw/*.mp3
+Resources/Raw/*.wav
+Resources/Raw/*.flac
+Resources/Raw/*.ogg
+Resources/Raw/*.m4a
+
 # User-specific files
 *.rsuser
 *.suo
