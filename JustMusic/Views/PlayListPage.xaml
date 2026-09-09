@@ -5,12 +5,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="JustMusic.Views.PlayListPage"
+             x:Name="PlayListPageElements"
              xmlns:models="clr-namespace:JustMusic.Models">
 
     <Grid Padding="0, 0">
         <toolkit:MediaElement x:Name="AudioPlayer"
-            Source="dzidzio-marsik.mp3"
-            ShouldShowPlaybackControls="False" />
+                              ShouldShowPlaybackControls="True"
+                              IsVisible="true" 
+                              ShouldAutoPlay="True" />
+                              
         <CollectionView
                 Grid.Column="0" Grid.Row="0"
                 x:Name="PlayListColectionView"
@@ -44,10 +47,36 @@
                             <Border StrokeThickness="0"
                                     StrokeShape="RoundRectangle 22">
 
-                                <Button Text="▶️" TextColor="#50C878"
-                                        Background="#FFFF99"
-                                        BorderWidth="0" Padding="0"
-                                        VerticalOptions="Fill" HorizontalOptions="Fill" />
+                                <Button Grid.Column="2"
+                                        Grid.RowSpan="2"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlayListViewModel}}, Path=PlaySongCommand}"
+                                        CommandParameter="{Binding}"
+                                        TextColor="#50C878" Text="▶"
+                                        Background="#FFFF99">
+
+                                    <Button.Triggers>
+
+                                        <DataTrigger
+                                                    TargetType="Button"
+                                                    Binding="{Binding isPlaying}"
+                                                    Value="True">
+
+                                            <Setter Property="Text" Value="⏸" />
+
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                                TargetType="Button"
+                                                Binding="{Binding IsPlaying}"
+                                                Value="False">
+
+                                            <Setter Property="Text" Value="▶" />
+
+                                        </DataTrigger>
+
+                                    </Button.Triggers>
+
+                                </Button>
 
                             </Border>
 

@@ -30,16 +30,31 @@ public class MusicLibraryService
             "*.mp3", 
             SearchOption.AllDirectories);
 
-            foreach (var filePath in files) 
+        foreach (var filePath in files) 
+        {
+            try
             {
+                var file = TagLib.File.Create(filePath);
                 var song = new Song
                 {
                     FilePath = filePath,
-                    Title = Path.GetFileNameWithoutExtension(filePath)
+                    Title = file.Tag.Title ?? Path.GetFileNameWithoutExtension(filePath),
+                    Artist = string.Join(", ", file.Tag.Performers) ?? "",
+                    Album = file.Tag.Album ?? "",
+                    Duration = file.Properties.Duration,
                 };
-                
+
                 Songs.Add(song);
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                $"Не вдалося прочитати файл: {filePath}");
+
+                System.Diagnostics.Debug.WriteLine(
+                    $"Помилка: {ex.Message}");
+            }
+        }
 
         await Task.CompletedTask;
         
