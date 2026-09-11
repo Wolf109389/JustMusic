@@ -14,11 +14,14 @@ public partial class PlayListViewModel : ObservableObject
     public event Action? SongPauseRequested;
     public event Action? SongResumeRequested;
 
-    private readonly MusicLibraryService _musicLibraryService;
     public ObservableCollection<Song> Songs { get; } = [];
-    public PlayListViewModel(MusicLibraryService musicLibraryService)
+    private readonly MusicLibraryService _musicLibraryService;
+    private readonly MusicImportService _musicImportService;
+
+    public PlayListViewModel(MusicLibraryService musicLibraryService, MusicImportService musicImportService )
     {
         _musicLibraryService = musicLibraryService;
+        _musicImportService = musicImportService;
     }
 
     public async Task LoadSongsAsync()
@@ -56,10 +59,28 @@ public partial class PlayListViewModel : ObservableObject
         if (_currentSong != null)
             _currentSong.isPlaying = false; 
 
-
         _currentSong = song;
         _currentSong.isPlaying = true;
 
         SongPlayRequested?.Invoke(song);
+    }
+
+    [ObservableProperty]
+    private bool isAddMusicMenuVisible = false;
+
+    [RelayCommand]
+    private void ToggleAddMusicMenu()
+    {
+        IsAddMusicMenuVisible = !IsAddMusicMenuVisible;
+    }
+
+    [RelayCommand]
+    private async Task CopyMusicFilesAsync()
+    {
+        await _musicImportService.PickAndCopyMusicAsync();
+
+        await LoadSongsAsync();
+
+        IsAddMusicMenuVisible = false;
     }
 }
