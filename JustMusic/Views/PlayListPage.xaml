@@ -11,7 +11,7 @@
     <Grid Padding="0, 0">
         <toolkit:MediaElement x:Name="AudioPlayer"
                               ShouldShowPlaybackControls="True"
-                              IsVisible="true" 
+                              IsVisible="False" 
                               ShouldAutoPlay="True" />
                               
         <CollectionView
@@ -34,7 +34,7 @@
                                 WidthRequest="52" HeightRequest="52"
                                 Padding="4"
                                 StrokeThickness="1"
-                                StrokeShape="RoundRectangle 20 ">
+                                StrokeShape="RoundRectangle 20">
 
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -73,13 +73,9 @@
                                             <Setter Property="Text" Value="▶" />
 
                                         </DataTrigger>
-
                                     </Button.Triggers>
-
                                 </Button>
-
                             </Border>
-
                         </Border>
 
                         <Border Grid.Column="3"
@@ -94,7 +90,7 @@
                                     TextColor="LightGray"
                                     FontSize="32"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="Center"/>
+                                    VerticalOptions="End"/>
                         </Border>
 
                         <Button Grid.Column="3" Grid.RowSpan="2" 
@@ -106,6 +102,63 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
+
+        <StackLayout VerticalOptions="End" >
+            <Button HeightRequest="50" WidthRequest="50" Margin="10"
+                    Text="+" FontSize="40" TextColor="#FFFF99"  
+                    BackgroundColor="#50C878"
+                    Command="{Binding ToggleAddMusicMenuCommand}"
+                    HorizontalOptions="End" VerticalOptions="End" />
+
+            <Border HeightRequest="50" Background="Red" 
+                    Margin="10" VerticalOptions="End"
+                    StrokeShape="RoundRectangle 50" />
+
+        </StackLayout>
+
+        <Border Background="DarkGray" Opacity="0.1" IsVisible="{Binding IsAddMusicMenuVisible}"/>
+        <Border Background="#03071E" HeightRequest="320"
+                Margin="20" Padding="20"    
+                StrokeShape="RoundRectangle 25"
+                IsVisible="{Binding IsAddMusicMenuVisible}">
+
+            <Grid RowDefinitions="*,*,*, Auto" ColumnDefinitions="*,44"
+                  RowSpacing="20"        ColumnSpacing="20">
+
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="Перший текст" TextColor="White"
+                       VerticalOptions="Center" HorizontalOptions="Fill" />
+
+                <Button Grid.Row="0" Grid.Column="1"
+                        WidthRequest="44" HeightRequest="44"
+                        VerticalOptions="Center" 
+                        Command="{Binding CopyMusicFilesCommand}"/>
+
+                <Label Grid.Row="1" Grid.Column="0"
+                       Text="Другий текст" TextColor="White"
+                       VerticalOptions="Center" HorizontalOptions="Fill" />
+
+                <Button Grid.Row="1" Grid.Column="1"
+                        WidthRequest="44" HeightRequest="44"
+                        VerticalOptions="Center" />
+
+                <Label Grid.Row="2" Grid.Column="0"
+                       Text="Третій текст" TextColor="White"
+                       VerticalOptions="Center" HorizontalOptions="Fill" />
+
+                <Button Grid.Row="2" Grid.Column="1"
+                        WidthRequest="44" HeightRequest="44"
+                        VerticalOptions="Center" />
+
+                <Button Grid.Row="3" Grid.Column="0"
+                        Grid.ColumnSpan="2" Text="Скасувати"
+                        HeightRequest="44" WidthRequest="140"
+                        HorizontalOptions="Center" VerticalOptions="End" 
+                        Command="{Binding ToggleAddMusicMenuCommand}"/>
+
+            </Grid>
+        </Border>
+
     </Grid>
 
 </ContentPage>

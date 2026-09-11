@@ -28,7 +28,8 @@ namespace JustMusic
 
             builder.Services.AddSingleton<PlayListViewModel>();
 
-            builder.Services.AddSingleton<MusicLibraryService>();   
+            builder.Services.AddSingleton<MusicLibraryService>();
+            builder.Services.AddSingleton<MusicImportService>();
 
             return builder.Build();
         }
