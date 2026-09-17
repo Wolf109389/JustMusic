@@ -8,156 +8,190 @@
              x:Name="PlayListPageElements"
              xmlns:models="clr-namespace:JustMusic.Models">
 
-    <Grid Padding="0, 0">
+    <Grid Padding="12,0">
+        <!-- InputTransparent="{Binding IsAddMusicMenuVisible}"> -->
         <toolkit:MediaElement x:Name="AudioPlayer"
                               ShouldShowPlaybackControls="True"
                               IsVisible="False" 
                               ShouldAutoPlay="True" />
-                              
+
         <CollectionView
                 Grid.Column="0" Grid.Row="0"
                 x:Name="PlayListColectionView"
                 ItemsSource="{Binding Songs}"
                 SelectionMode="None">
+
+            <CollectionView.Footer>
+                <Grid HeightRequest="72"/>
+            </CollectionView.Footer>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Song">
-                    <Grid Padding="16, 12" ColumnDefinitions="Auto, *, Auto, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="10">
+                    <Grid Padding="0,5">
+
+                        <Border  BackgroundColor="#182018"
+                                 Stroke="Lime"
+                                 StrokeThickness="1"
+                                 StrokeShape="RoundRectangle 15">
+
+                            <Grid Padding="16, 12" ColumnDefinitions="*, Auto, Auto" 
+                                  RowDefinitions="Auto, Auto" ColumnSpacing="10">
 
 
-                        <Label Grid.Column="1" Grid.Row="0" 
-                               Text="{Binding Title}" FontSize="18"/>
+                                <Label Grid.Column="0" Grid.Row="0" 
+                                   Text="{Binding Title}" FontSize="18" TextColor="Wheat"/>
 
-                        <Label Grid.Column="1" Grid.Row="1"
-                               Text="{Binding Artist}" TextColor="DarkGray"/>
+                                <Label Grid.Column="0" Grid.Row="1"
+                                   Text="{Binding Artist}" TextColor="DarkGray"/>
 
-                        <Border Grid.Column="2" Grid.RowSpan="2"
-                                WidthRequest="52" HeightRequest="52"
-                                Padding="4"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 20">
+                                <Border Grid.Column="1" Grid.RowSpan="2"
+                                    WidthRequest="52" HeightRequest="52"
+                                    Padding="4"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20">
 
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#FFF200" Offset="0.0" />
-                                    <GradientStop Color="#7FFF00" Offset="0.5" />
-                                    <GradientStop Color="#008000" Offset="0.9" />
-                                </LinearGradientBrush>
-                            </Border.Background>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#FFF200" Offset="0.0" />
+                                            <GradientStop Color="#7FFF00" Offset="0.5" />
+                                            <GradientStop Color="#008000" Offset="0.9" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
 
-                            <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 22">
+                                    <Border StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 22">
 
-                                <Button Grid.Column="2"
-                                        Grid.RowSpan="2"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlayListViewModel}}, Path=PlaySongCommand}"
-                                        CommandParameter="{Binding}"
-                                        TextColor="#50C878" Text="▶"
-                                        Background="#FFFF99">
+                                        <Button Grid.Column="1"
+                                            Grid.RowSpan="2"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlayListViewModel}}, Path=PlaySongCommand}"
+                                            CommandParameter="{Binding}"
+                                            TextColor="#50C878" Text="▶"
+                                            Background="#FFFF99">
 
-                                    <Button.Triggers>
+                                            <Button.Triggers>
 
-                                        <DataTrigger
+                                                <DataTrigger
+                                                        TargetType="Button"
+                                                        Binding="{Binding isPlaying}"
+                                                        Value="True">
+
+                                                    <Setter Property="Text" Value="⏸" />
+
+                                                </DataTrigger>
+
+                                                <DataTrigger
                                                     TargetType="Button"
                                                     Binding="{Binding isPlaying}"
-                                                    Value="True">
+                                                    Value="False">
 
-                                            <Setter Property="Text" Value="⏸" />
+                                                    <Setter Property="Text" Value="▶" />
 
-                                        </DataTrigger>
+                                                </DataTrigger>
+                                            </Button.Triggers>
 
-                                        <DataTrigger
-                                                TargetType="Button"
-                                                Binding="{Binding IsPlaying}"
-                                                Value="False">
+                                        </Button>
+                                    </Border>
+                                </Border>
 
-                                            <Setter Property="Text" Value="▶" />
-
-                                        </DataTrigger>
-                                    </Button.Triggers>
-                                </Button>
-                            </Border>
-                        </Border>
-
-                        <Border Grid.Column="3"
-                                Grid.RowSpan="2"
-                                WidthRequest="25"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                StrokeThickness="0"
-                                BackgroundColor="Transparent">
-
-                            <Label  Text="⋮"
-                                    TextColor="LightGray"
-                                    FontSize="32"
+                                <Border Grid.Column="2"
+                                    Grid.RowSpan="2"
+                                    WidthRequest="25"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="End"/>
+                                    VerticalOptions="Center"
+                                    StrokeThickness="0"
+                                    BackgroundColor="Transparent">
+
+                                    <Label  Text="⋮"
+                                        TextColor="LightGray"
+                                        FontSize="32"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End"/>
+                                </Border>
+
+                                <Button Grid.Column="2" Grid.RowSpan="2" 
+                                    WidthRequest="20" MinimumWidthRequest="0"
+                                    Background="Transparent" />
+
+                            </Grid>
                         </Border>
-
-                        <Button Grid.Column="3" Grid.RowSpan="2" 
-                                WidthRequest="20" MinimumWidthRequest="0"
-                                Background="Transparent" />
-
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
         </CollectionView>
 
-        <StackLayout VerticalOptions="End" >
-            <Button HeightRequest="50" WidthRequest="50" Margin="10"
-                    Text="+" FontSize="40" TextColor="#FFFF99"  
-                    BackgroundColor="#50C878"
-                    Command="{Binding ToggleAddMusicMenuCommand}"
-                    HorizontalOptions="End" VerticalOptions="End" />
+        <Button HeightRequest="50" WidthRequest="50"
+                Margin="10"
+                Text="+" FontSize="40"
+                TextColor="#FFFF99" BackgroundColor="#50C878"
+                Command="{Binding ToggleAddMusicMenuCommand}"
+                HorizontalOptions="End"
+                VerticalOptions="End" />
 
-            <Border HeightRequest="50" Background="Red" 
-                    Margin="10" VerticalOptions="End"
-                    StrokeShape="RoundRectangle 50" />
+        <Border VerticalOptions="End"
+                HeightRequest="50" MinimumWidthRequest="200" MaximumWidthRequest="400"
+                
+                HorizontalOptions="Start"
+                Margin="10"
+                Background="#182018"
+                Stroke="#50C878" StrokeThickness="1"
+                StrokeShape="RoundRectangle 25"
+                InputTransparent="False">
 
-        </StackLayout>
+            <!-- TABS -->
+            
+        </Border>
 
-        <Border Background="DarkGray" Opacity="0.1" IsVisible="{Binding IsAddMusicMenuVisible}"/>
-        <Border Background="#03071E" HeightRequest="320"
+        <Grid IsVisible="{Binding IsAddMusicMenuVisible}"
+              BackgroundColor="#80000000"
+              ZIndex="100"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill">
+             
+            <Border Background="#03071E" HeightRequest="320"
                 Margin="20" Padding="20"    
                 StrokeShape="RoundRectangle 25"
                 IsVisible="{Binding IsAddMusicMenuVisible}">
 
-            <Grid RowDefinitions="*,*,*, Auto" ColumnDefinitions="*,44"
-                  RowSpacing="20"        ColumnSpacing="20">
+                <Grid RowDefinitions="*,*,*, Auto" ColumnDefinitions="*,44"
+                  RowSpacing="20"              ColumnSpacing="20">
 
-                <Label Grid.Row="0" Grid.Column="0"
+                    <Label Grid.Row="0" Grid.Column="0"
                        Text="Перший текст" TextColor="White"
                        VerticalOptions="Center" HorizontalOptions="Fill" />
 
-                <Button Grid.Row="0" Grid.Column="1"
+                    <Button Grid.Row="0" Grid.Column="1"
                         WidthRequest="44" HeightRequest="44"
                         VerticalOptions="Center" 
                         Command="{Binding CopyMusicFilesCommand}"/>
 
-                <Label Grid.Row="1" Grid.Column="0"
+                    <Label Grid.Row="1" Grid.Column="0"
                        Text="Другий текст" TextColor="White"
                        VerticalOptions="Center" HorizontalOptions="Fill" />
 
-                <Button Grid.Row="1" Grid.Column="1"
+                    <Button Grid.Row="1" Grid.Column="1"
                         WidthRequest="44" HeightRequest="44"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center" 
+                        IsEnabled="False"/>
 
-                <Label Grid.Row="2" Grid.Column="0"
+                    <Label Grid.Row="2" Grid.Column="0"
                        Text="Третій текст" TextColor="White"
                        VerticalOptions="Center" HorizontalOptions="Fill" />
 
-                <Button Grid.Row="2" Grid.Column="1"
+                    <Button Grid.Row="2" Grid.Column="1"
                         WidthRequest="44" HeightRequest="44"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        IsEnabled="False"/>
 
-                <Button Grid.Row="3" Grid.Column="0"
+                    <Button Grid.Row="3" Grid.Column="0"
                         Grid.ColumnSpan="2" Text="Скасувати"
                         HeightRequest="44" WidthRequest="140"
                         HorizontalOptions="Center" VerticalOptions="End" 
                         Command="{Binding ToggleAddMusicMenuCommand}"/>
 
-            </Grid>
-        </Border>
+                </Grid>
+            </Border>
+        </Grid>
 
     </Grid>
 
