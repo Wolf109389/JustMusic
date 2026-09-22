@@ -40,25 +40,24 @@ public partial class PlayListViewModel : ObservableObject
 
         if (_currentSong == song)
         {
-            if (song.isPlaying)
+            if (song.IsPlaying)
             {
-                song.isPlaying = false;
+                song.IsPlaying = false;
                 SongPauseRequested?.Invoke();
             }
             else
             {
-                song.isPlaying = true;
+                song.IsPlaying = true;
                 SongResumeRequested?.Invoke();
             }
             return;
         }
 
-        if (_currentSong != null)
-            _currentSong.isPlaying = false; 
+        _currentSong?.IsPlaying = false;
 
 
         _currentSong = song;
-        _currentSong.isPlaying = true;
+        _currentSong.IsPlaying = true;
 
         SongPlayRequested?.Invoke(song);
     }
