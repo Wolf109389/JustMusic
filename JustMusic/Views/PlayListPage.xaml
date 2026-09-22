@@ -6,7 +6,8 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="JustMusic.Views.PlayListPage"
              x:Name="PlayListPageElements"
-             xmlns:models="clr-namespace:JustMusic.Models">
+             xmlns:models="clr-namespace:JustMusic.Models"
+             xmlns:behaviors="clr-namespace:JustMusic.Behaviors">
 
     <Grid Padding="0, 0">
         <toolkit:MediaElement x:Name="AudioPlayer"
@@ -30,53 +31,85 @@
                         <Label Grid.Column="1" Grid.Row="1"
                                Text="{Binding Artist}" TextColor="DarkGray"/>
 
-                        <Border Grid.Column="2" Grid.RowSpan="2"
-                                WidthRequest="52" HeightRequest="52"
+                        <Border Grid.Column="2"
+                                Grid.RowSpan="2"
+                                WidthRequest="52"
+                                HeightRequest="52"
                                 Padding="4"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 20 ">
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 20">
 
                             <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#FFF200" Offset="0.0" />
-                                    <GradientStop Color="#7FFF00" Offset="0.5" />
-                                    <GradientStop Color="#008000" Offset="0.9" />
+                                <LinearGradientBrush StartPoint="0,0"
+                                                     EndPoint="1,1">
+
+                                    <GradientStop Color="#FFF200" Offset="0.00"/>
+                                    <GradientStop Color="#F5FF4A" Offset="0.32"/>
+                                    <GradientStop Color="#B6FF00" Offset="0.58"/>
+                                    <GradientStop Color="#32E85C" Offset="0.82"/>
+                                    <GradientStop Color="#00A86B" Offset="1.00"/>
+
                                 </LinearGradientBrush>
                             </Border.Background>
 
                             <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 22">
+                                StrokeShape="RoundRectangle 22">
 
-                                <Button Grid.Column="2"
-                                        Grid.RowSpan="2"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlayListViewModel}}, Path=PlaySongCommand}"
-                                        CommandParameter="{Binding}"
-                                        TextColor="#50C878" Text="▶"
-                                        Background="#FFFF99">
+                                <!-- <Border.Background>
 
-                                    <Button.Triggers>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                                         EndPoint="1,1">
 
-                                        <DataTrigger
-                                                    TargetType="Button"
-                                                    Binding="{Binding isPlaying}"
-                                                    Value="True">
+                                        <GradientStop Color="#FFF59A" Offset="0.00"/>
+                                        <GradientStop Color="#DFFF65" Offset="0.25"/>
+                                        <GradientStop Color="#80FF91" Offset="0.50"/>
+                                        <GradientStop Color="#72DFFF" Offset="0.75"/>
+                                        <GradientStop Color="#BFFF75" Offset="1.00"/>
 
-                                            <Setter Property="Text" Value="⏸" />
+                                    </LinearGradientBrush> 
+
+                                </Border.Background> -->
+
+                                <Border.Background>
+                                    <RadialGradientBrush Center="0.35,0.30"
+                                                         Radius="0.85">
+
+                                        <GradientStop Color="#FFF59A" Offset="0.00"/>
+                                        <GradientStop Color="#DFFF65" Offset="0.32"/>
+                                        <GradientStop Color="#80FF91" Offset="0.65"/>
+                                        <GradientStop Color="#72DFFF" Offset="1.00"/>
+
+                                    </RadialGradientBrush>
+                                </Border.Background>
+
+                                <Border.Behaviors>
+
+                                    <behaviors:PlayingGradientBehavior IsPlaying="{Binding IsPlaying}"/>
+
+                                </Border.Behaviors>
+
+                                <ImageButton  Source="play.png"
+                                              Padding="5"
+                                              Aspect="AspectFit"
+                                              BackgroundColor="Transparent"
+                                              Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                                              Path=BindingContext.PlaySongCommand}"
+                                              CommandParameter="{Binding .}">
+
+                                    <ImageButton.Triggers>
+
+                                        <DataTrigger TargetType="ImageButton"
+                                                     Binding="{Binding IsPlaying}"
+                                                     Value="True">
+
+                                            <Setter Property="Source"
+                                                    Value="pause.png"/>
 
                                         </DataTrigger>
 
-                                        <DataTrigger
-                                                TargetType="Button"
-                                                Binding="{Binding IsPlaying}"
-                                                Value="False">
+                                    </ImageButton.Triggers>
 
-                                            <Setter Property="Text" Value="▶" />
-
-                                        </DataTrigger>
-
-                                    </Button.Triggers>
-
-                                </Button>
+                                </ImageButton>
 
                             </Border>
 

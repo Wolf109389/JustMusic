@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+
+    <defs>
+        <linearGradient id="playGradient" x1="0" y1="0" x2="0.75" y2="1">
+
+            <stop offset="0%" stop-color="#9CFF00"></stop>
+            <stop offset="42%" stop-color="#39E600"></stop>
+            <stop offset="100%" stop-color="#007A35"></stop>
+
+        </linearGradient>
+    </defs>
+
+    <path d="
+        M 31 18
+        C 26 15, 22 18, 22 24
+
+        L 22 76
+
+        C 22 82, 26 85, 31 82
+
+        L 72 58
+
+        C 77 55, 80 53, 80 50
+        C 80 47, 77 45, 72 42
+
+        L 31 18
+        Z" fill="url(#playGradient)"></path>
+
+</svg>

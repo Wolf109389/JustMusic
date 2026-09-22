@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace JustMusic.Models;
 
-public class Song : ObservableObject
+public partial class Song : ObservableObject
 {
     [PrimaryKey, AutoIncrement]   
     public int Id { get; set; }
@@ -20,7 +20,7 @@ public class Song : ObservableObject
     private bool _isPlaying = false;
 
     [Ignore]
-    public bool isPlaying
+    public bool IsPlaying
     {
         get => _isPlaying;
         set => SetProperty(ref _isPlaying, value);

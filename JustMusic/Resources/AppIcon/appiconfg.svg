@@ -1,8 +1,92 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <path d="m 105.50037,281.60863 c -2.70293,0 -5.00091,-0.90042 -6.893127,-2.70209 -1.892214,-1.84778 -2.837901,-4.04181 -2.837901,-6.58209 0,-2.58722 0.945687,-4.80389 2.837901,-6.65167 1.892217,-1.84778 4.190197,-2.77167 6.893127,-2.77167 2.74819,0 5.06798,0.92389 6.96019,2.77167 1.93749,1.84778 2.90581,4.06445 2.90581,6.65167 0,2.54028 -0.96832,4.73431 -2.90581,6.58209 -1.89221,1.80167 -4.212,2.70209 -6.96019,2.70209 z" style="fill:#ffffff;fill-rule:nonzero;stroke-width:0.838376" />
-    <path d="M 213.56111,280.08446 H 195.99044 L 149.69953,207.0544 c -1.17121,-1.84778 -2.14037,-3.76515 -2.90581,-5.75126 h -0.40578 c 0.36051,2.12528 0.54076,6.67515 0.54076,13.6496 v 65.13172 h -15.54349 v -99.36009 h 18.71925 l 44.7374,71.29798 c 1.89222,2.95695 3.1087,4.98917 3.64945,6.09751 h 0.26996 c -0.45021,-2.6325 -0.67573,-7.09015 -0.67573,-13.37293 v -64.02256 h 15.47557 z" style="fill:#ffffff;fill-rule:nonzero;stroke-width:0.838376" />
-    <path d="m 289.25134,280.08446 h -54.40052 v -99.36009 h 52.23835 v 13.99669 h -36.15411 v 28.13085 h 33.31621 v 13.9271 h -33.31621 v 29.37835 h 38.31628 z" style="fill:#ffffff;fill-rule:nonzero;stroke-width:0.838376" />
-    <path d="M 366.56466,194.72106 H 338.7222 v 85.3634 h -16.08423 v -85.3634 h -27.77455 v -13.99669 h 71.70124 z" style="fill:#ffffff;fill-rule:nonzero;stroke-width:0.838376" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Transparent overlay for justMusic splash: staff lines, notes and face -->
+
+  <g fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <!-- Top flowing staff -->
+    <path d="M-30 70 C170 35 275 95 390 165 S650 315 1055 105"/>
+    <path d="M-30 86 C170 51 275 111 390 181 S650 331 1055 121"/>
+    <path d="M-30 102 C170 67 275 127 390 197 S650 347 1055 137"/>
+    <path d="M-30 118 C170 83 275 143 390 213 S650 363 1055 153"/>
+    <path d="M-30 134 C170 99 275 159 390 229 S650 379 1055 169"/>
+
+    <!-- Middle left staff -->
+    <path d="M-35 340 C110 350 170 410 260 485"/>
+    <path d="M-35 356 C110 366 170 426 260 501"/>
+    <path d="M-35 372 C110 382 170 442 260 517"/>
+    <path d="M-35 388 C110 398 170 458 260 533"/>
+    <path d="M-35 404 C110 414 170 474 260 549"/>
+
+    <!-- Middle right staff -->
+    <path d="M735 390 C855 395 900 465 1055 525"/>
+    <path d="M735 406 C855 411 900 481 1055 541"/>
+    <path d="M735 422 C855 427 900 497 1055 557"/>
+    <path d="M735 438 C855 443 900 513 1055 573"/>
+    <path d="M735 454 C855 459 900 529 1055 589"/>
+
+    <!-- Bottom staff -->
+    <path d="M-40 615 C165 590 260 715 420 790 S720 900 1055 735"/>
+    <path d="M-40 631 C165 606 260 731 420 806 S720 916 1055 751"/>
+    <path d="M-40 647 C165 622 260 747 420 822 S720 932 1055 767"/>
+    <path d="M-40 663 C165 638 260 763 420 838 S720 948 1055 783"/>
+    <path d="M-40 679 C165 654 260 779 420 854 S720 964 1055 799"/>
+  </g>
+
+  <!-- Musical notes -->
+  <g fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- top left beamed notes -->
+    <ellipse cx="145" cy="112" rx="17" ry="13" transform="rotate(-15 145 112)"/>
+    <ellipse cx="202" cy="127" rx="17" ry="13" transform="rotate(-15 202 127)"/>
+    <path d="M158 109 L180 51 M215 124 L237 66 M180 51 L237 66" fill="none" stroke-width="9"/>
+
+    <ellipse cx="296" cy="181" rx="15" ry="12" transform="rotate(-20 296 181)"/>
+    <path d="M307 178 L325 126 L340 151" fill="none" stroke-width="8"/>
+
+    <ellipse cx="422" cy="252" rx="15" ry="12" transform="rotate(-18 422 252)"/>
+    <path d="M433 249 L450 198 L465 224" fill="none" stroke-width="8"/>
+
+    <ellipse cx="851" cy="191" rx="16" ry="12" transform="rotate(-20 851 191)"/>
+    <path d="M862 188 L880 132 L899 153" fill="none" stroke-width="9"/>
+
+    <!-- side notes -->
+    <ellipse cx="62" cy="373" rx="13" ry="10" transform="rotate(-18 62 373)"/>
+    <path d="M72 370 L74 326" fill="none" stroke-width="6"/>
+
+    <ellipse cx="792" cy="445" rx="14" ry="11" transform="rotate(-20 792 445)"/>
+    <path d="M803 442 L820 397 L836 419" fill="none" stroke-width="7"/>
+
+    <ellipse cx="953" cy="558" rx="17" ry="13" transform="rotate(-20 953 558)"/>
+    <path d="M966 554 L984 500 L1001 524" fill="none" stroke-width="9"/>
+
+    <!-- bottom left pair -->
+    <ellipse cx="80" cy="682" rx="18" ry="14" transform="rotate(-18 80 682)"/>
+    <ellipse cx="137" cy="696" rx="18" ry="14" transform="rotate(-18 137 696)"/>
+    <path d="M94 678 L115 620 M151 692 L172 634 M115 620 L172 634" fill="none" stroke-width="10"/>
+
+    <ellipse cx="227" cy="754" rx="13" ry="10" transform="rotate(-20 227 754)"/>
+    <path d="M237 751 L253 706 L268 729" fill="none" stroke-width="7"/>
+
+    <ellipse cx="745" cy="825" rx="13" ry="10" transform="rotate(-20 745 825)"/>
+    <path d="M755 822 L770 779 L784 801" fill="none" stroke-width="7"/>
+
+    <ellipse cx="920" cy="843" rx="27" ry="20" transform="rotate(-20 920 843)"/>
+    <path d="M940 836 L969 751 L995 791" fill="none" stroke-width="13"/>
+  </g>
+
+  <!-- Musical face -->
+  <g fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- left eye: quarter note -->
+    <ellipse cx="420" cy="472" rx="38" ry="30" transform="rotate(-15 420 472)"/>
+    <path d="M448 464 L448 366" fill="none" stroke-width="17"/>
+
+    <!-- right eye: eighth note -->
+    <ellipse cx="574" cy="479" rx="38" ry="29" transform="rotate(-15 574 479)"/>
+    <path d="M602 470 L612 399 L653 437" fill="none" stroke-width="17"/>
+
+    <!-- smile -->
+    <path d="M406 552 C455 620 540 625 589 555" fill="none" stroke-width="14"/>
+
+    <!-- tongue outline -->
+    <path d="M552 596 C558 632 573 648 592 640 C612 631 610 601 596 575 Z"
+          fill="#DFFF23" stroke-width="10"/>
+  </g>
 </svg>
